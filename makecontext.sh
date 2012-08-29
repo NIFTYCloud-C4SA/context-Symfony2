@@ -1,4 +1,4 @@
-﻿#!/bin/bash
+#!/bin/bash
 
 ## Symfonyコンテクスト作成シェルスクリプト
 
@@ -9,21 +9,19 @@ BIN_TAR="/usr/bin/tar"
 BIN_CD="cd"
 
 
-URL_ARCHIVE="http://symfony.com/download?v=Symfony_Standard_Vendors_2.0.16.tgz"
+URL_ARCHIVE="http://symfony.com/download?v=Symfony_Standard_Vendors_2.0.17.tgz"
 
 ## make context
 ${BIN_CD} ./contexts/krm/
-${BIN_CURL} -o ./symfony.tar.gz ${URL_ARCHIVE}
-${BIN_TAR} zxvf ./xoopsx.tar.gz
-${BIN_MV} html public_html
-${BIN_MV} public_html/install/class/settingmanager.php public_html/install/class/settingmanager_org.php
-${BIN_MV} settingmanager.php public_html/install/class/settingmanager.php
-${BIN_RM} xoopsx.tar.gz
+${BIN_CURL} -o ./symfony.tgz ${URL_ARCHIVE}
+${BIN_TAR} zxvf symfony.tgz
+${BIN_RM} ./symfony.tgz
 
 ## create archive
-${BIN_TAR} czpf ./web_root.tar.gz {public_html,xoops_trust_path,docs,extras}
-${BIN_RM} ./{public_html,xoops_trust_path,docs,extras}
-${BIN_CD} ../
+${BIN_CD} ./Symfony/
+${BIN_TAR} czpf ../web_root.tar.gz ./{LICENSE,README.md,app,bin,deps,deps.lock,src,vendor,web}
+${BIN_CD} ../../
+${BIN_RM} ./Symfony
 ${BIN_TAR} czpf ./krm.tar.gz ./krm/*
 
 ## end
