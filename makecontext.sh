@@ -16,6 +16,9 @@ ${BIN_CD} ./contexts/krm/
 ${BIN_CURL} -o ./symfony.tgz ${URL_ARCHIVE}
 ${BIN_TAR} zxvf symfony.tgz
 ${BIN_RM} ./symfony.tgz
+${BIN_MV} ./Symfony/app/config/config.yml ./Symfony/app/config/config_org.yml
+${BIN_MV} ./config.yml ./Symfony/app/config/config.yml
+${BIN_MV} ./param.php ./Symfony/app/config/param.php
 
 ## create archive
 ${BIN_CD} ./Symfony/
