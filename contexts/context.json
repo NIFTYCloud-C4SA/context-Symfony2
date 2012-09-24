@@ -1,10 +1,10 @@
 {
-    "name": "Symfony_2.0.17",
-        "version": "2.0.17",
-        "category": { "language": "PHP", "framework": "Symfony", "priority": 0 },
-        "ui-name": "Symfony",
-        "ui-summary": "Symfony_2.0.17",
-        "description": "Symfony(シンフォニー)は、PHP言語で書かれたWebアプリケーションフレームワークです。",
+    "name": "Symfony2",
+        "version": "1.0.0",
+        "category": { "language": "PHP", "framework": "Symfony2", "priority": 0 },
+        "ui-name": "Symfony2",
+        "ui-summary": "Symfony_v2.1.1",
+        "description": "Symfony2.x は、PHP言語で書かれたWebアプリケーションフレームワークです。",
         "description-url": "http://symfony.com/",
         "parameters": {
             "mysql_password": { "type": "string",
@@ -14,7 +14,7 @@
                 "restr": "[0-9A-Za-z]{8,16}",
                 "auto": "[0-9A-Za-z]{8}" }
         },
-        "context_resources": ["web_root.tar.gz", "nginx.conf"],
+        "context_resources": ["docroot.tar.gz", "nginx.conf"],
         "canvas_version": "1.0.0",
         "instruction": [
         { "type": "appliance",
@@ -44,7 +44,7 @@
             "signal": "install",
             "in": {
                 "type": "archive",
-                "resource": "web_root.tar.gz"
+                "resource": "docroot.tar.gz"
             }
         },
         { "type": "appliance",
@@ -79,7 +79,7 @@
                 "interpreter_id": "php_id",
                 "max_children": 2,
                 "project_root": { "type": "template_string",
-                    "template": "/canvases/${canvas_id}/data/${disk_id}/public_html" },
+                    "template": "/canvases/${canvas_id}/data/${disk_id}/web" },
                 "env_ids": ["env_id"]
             }
         },
